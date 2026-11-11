@@ -47,7 +47,7 @@ O `main.py`:
    - `hidrogramas_resumo.png/.pdf`: melhor ajuste de cada cenário nos 4 eventos;
    - `convergencia_metodos.png/.pdf`: melhor NSE vs. número de simulações e ‖gP‖∞ por iteração
      (Evento 1, Cenário 2);
-4. copia as figuras PNG para `relatorio/Template/imagens/`.
+4. copia as figuras PNG para `relatorio/Template/imagens/` (pasta do relatório, criada se não existir).
 
 O `experimentos_extras.py`:
 - calcula o perfil do NSE em função de W2, com os demais parâmetros recalibrados
@@ -62,14 +62,15 @@ iniciais e semente) ficam no início de `src/main.py`.
 
 ## Dados
 
-Os CSVs em `dados/` já acompanham o trabalho. Eles foram gerados por `src/extract_pdf_data.py`
-a partir das figuras do artigo de Silva, Benso & Vasconcelos (2026), que ficam em
-`dados/figuras_artigo/`. As vazões foram digitalizadas dos gráficos e a chuva de 5 min foi
-reconstruída preservando o total de cada evento. Para regenerar os CSVs:
+Os CSVs em `dados/` (`evento_1.csv` a `evento_4.csv`) já acompanham o repositório e são tudo o
+que o código precisa para rodar. Eles foram obtidos a partir das figuras do artigo de
+Silva, Benso & Vasconcelos (2026): as vazões foram digitalizadas dos gráficos e a chuva de 5 min
+foi reconstruída preservando o total de cada evento.
 
-```bash
-python3 src/extract_pdf_data.py
-```
+Os recortes das figuras do artigo usados nessa digitalização **não estão no repositório**, por
+serem material do artigo. Por isso, o script `src/extract_pdf_data.py`, que gera os CSVs a partir
+desses recortes, só funciona com eles em `dados/figuras_artigo/`; ele é mantido apenas para
+documentar como os dados foram obtidos.
 
 ## Estrutura
 
@@ -80,7 +81,8 @@ src/bfgs_box.py          restrições ativas + BFGS nas variáveis livres
 src/de.py                Evolução Diferencial (configuração padrão do DEoptim)
 src/experimentos_extras.py  perfis de W2 e Ks, caixa de W2 ampliada
 src/instances.py         leitura dos eventos
-src/extract_pdf_data.py  digitalização dos dados a partir das figuras do artigo
+src/extract_pdf_data.py  digitalização dos dados (precisa dos recortes das figuras, fora do repositório)
 src/main.py              experimentos principais, tabelas e gráficos
-relatorio/Template/      relatório em LaTeX (main.tex)
+dados/                   eventos 1 a 4 em CSV (chuva, vazão observada e simulações do artigo)
+resultados/              tabelas, JSONs e figuras gerados pelos scripts
 ```
